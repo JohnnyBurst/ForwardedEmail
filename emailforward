@@ -1,0 +1,11 @@
+#Run powershell as administrator
+#Run import-module to acquire the latest exchange online
+Install-Module -Name ExchangeOnlineManagement
+
+#Run connect-exchangeonline
+Connect-ExchangeOnline
+#Enter credentials to connect to the exchange environment
+#Run following line to get all users and the recipient email if mail is being forwarded
+Get-Mailbox | select UserPrincipalName,ForwardingSmtpAddress,DeliverToMailboxAndForward
+#To export
+Get-Mailbox | select UserPrincipalName,ForwardingSmtpAddress,DeliverToMailboxAndForward | Export-csv c:\users\username\documents\forwardedusers.csv -NoTypeInformation
